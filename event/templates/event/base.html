@@ -1,0 +1,17 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+  	{% if title %}
+    	<title>NGO Event - {{ title }}</title>
+    {% else %}
+    	<title>NGO Event</title>
+    {% endif %}
+  </head>
+  <body>
+    {% block content %} 
+
+    {% endblock %}
+
+  </body>
+</html>
