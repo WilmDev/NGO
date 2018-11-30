@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+from datetime import datetime
+from ngo import settings 
 from django.contrib.auth.models import User
 
 
@@ -7,18 +9,37 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Event(models.Model):
+	CONFERENCE = 'CNF'
+	SEMINAR = 'SMR'
+	PRESENTATION = 'PRS'
+	RELIGIOUS = 'RGS'
+	SPIRITUAL = 'SPR'
+	SOCIAL = 'SCL'
+	GENERAL = 'GNR'
+
+	categories = (
+		(CONFERENCE, 'Conference'),
+		(SEMINAR, 'Seminar'),
+		(PRESENTATION, 'Presentation'),
+		(RELIGIOUS, 'Religious'),
+		(SPIRITUAL, 'Spiritual'),
+		(SOCIAL, 'Social'),
+		(GENERAL, 'Not Specified')
+		)
+
+
 	event_name = models.CharField(max_length = 100)
 	event_description = models.TextField()
-	event_category = models.CharField(max_length = 100)
-	event_start_date = models.DateTimeField()
-	event_end_date = models.DateTimeField()
+	event_category = models.CharField(max_length = 100, choices=categories, default=GENERAL)
+	event_start_date = models.DateField()
+	event_end_date = models.DateField()
 	event_start_time = models.TimeField()
 	event_end_time = models.TimeField()
 	event_location = models.CharField(max_length = 100)
 	ticket_price_adult = models.DecimalField(max_digits=6, decimal_places=2)
 	ticket_price_child = models.DecimalField(max_digits=6, decimal_places=2)
-	registration_status = models.BooleanField(default=True)
-	author = models.ForeignKey(User, on_delete=models.CASCADE)
+	open_for_registration = models.BooleanField(default=True)
+	event_requested = models.ForeignKey(User, on_delete=models.CASCADE)
 
 	
 
