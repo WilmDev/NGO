@@ -39,7 +39,7 @@ class Event(models.Model):
 	ticket_price_adult = models.DecimalField(max_digits=6, decimal_places=2)
 	ticket_price_child = models.DecimalField(max_digits=6, decimal_places=2)
 	open_for_registration = models.BooleanField(default=True)
-	event_requested = models.ForeignKey(User, on_delete=models.CASCADE)
+	event_requested = models.ForeignKey(User, models.SET_NULL, blank=True, null=True,)
 
 	
 
