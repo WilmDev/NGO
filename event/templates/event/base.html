@@ -9,9 +9,16 @@
     {% endif %}
   </head>
   <body>
-    {% block content %} 
+    {% if messages %}
+      {% for message in messages %}
+        <div>
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
 
-    {% endblock %}
+
+    {% block content %} {% endblock %}
 
   </body>
 </html>
