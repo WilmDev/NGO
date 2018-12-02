@@ -40,6 +40,7 @@ class Event(models.Model):
 	ticket_price_child = models.DecimalField(max_digits=6, decimal_places=2)
 	open_for_registration = models.BooleanField(default=True)
 	event_requested = models.ForeignKey(User, models.SET_NULL, blank=True, null=True,)
+	event_image = models.ImageField(upload_to='event_pics', blank=True)
 
 	
 
