@@ -11,6 +11,11 @@ def home(request):
 	}
 	return render(request, 'event/home.html', context)
 
-def about(request):
-	pass
+def event_registration(request, id):
+	item = Event.objects.filter(id = id).first()
+	context = {
+		'event': item,
+		'title': 'Event registration'
+	}
+	return render(request, 'event/registration.html', context)
 
