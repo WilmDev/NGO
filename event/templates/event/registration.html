@@ -5,5 +5,13 @@
 
 
 {% block content %}
-	<h2>{{ event.event_name }}</h2>
+	<div>
+		<form method="POST">
+			{% csrf_token %}
+			<legend>Event Registration</legend>
+			{{ form|crispy }}
+			<div>
+				<button type="submit">Register for this event</button>
+			</div>		
+	</div>
 {% endblock content %}
