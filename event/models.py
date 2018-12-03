@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 
 
 
+
 # Create your models here.
 class Event(models.Model):
 	CONFERENCE = 'CNF'
@@ -46,3 +47,18 @@ class Event(models.Model):
 
 	def __str__(self):
 		return self.event_name
+
+class Event_Registration(models.Model):
+	first_name = models.CharField(max_length = 100)
+	last_name = models.CharField(max_length = 100)
+	email_id = models.EmailField(max_length = 100)
+	contact_number = models.IntegerField()
+	address = models.TextField()
+	quantity_adult = models.IntegerField()
+	quantity_child = models.IntegerField()
+	event = models.ForeignKey(Event, on_delete=models.CASCADE)
+
+	def __str__(self):
+		return self.event.event_name
+
+
