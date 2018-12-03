@@ -16,4 +16,4 @@ class EventRegistrationForm(forms.Form):
 
 
 class ConfirmRegistrationForm(forms.Form):
-	pass
+	register = forms.BooleanField(initial = True)

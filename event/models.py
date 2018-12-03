@@ -52,10 +52,10 @@ class Event_Registration(models.Model):
 	first_name = models.CharField(max_length = 100)
 	last_name = models.CharField(max_length = 100)
 	email_id = models.EmailField(max_length = 100)
-	contact_number = models.IntegerField()
+	contact_number = models.IntegerField(null=True)
 	address = models.TextField()
-	quantity_adult = models.IntegerField()
-	quantity_child = models.IntegerField()
+	quantity_adult = models.IntegerField(null=True)
+	quantity_child = models.IntegerField(null=True)
 	event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
 	def __str__(self):

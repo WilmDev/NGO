@@ -3,8 +3,19 @@
 
 {% block content %}
 
-	<h2>{{f_name}} : {{ttl}}</h2>
-
+	<h2>{{first_name}} : {{ttl}}</h2>
+	<div>
+		<form method="POST">
+			{% csrf_token %}
+		
+			{{ form|crispy }}
+			<div>
+				<button type="submit">Confirm</button>
+			</div>
+			<div>
+				<h3>{{message}}</h3>
+			</div>		
+	</div>
 	
 
 
